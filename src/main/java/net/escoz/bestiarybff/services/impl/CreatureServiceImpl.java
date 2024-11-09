@@ -1,6 +1,7 @@
 package net.escoz.bestiarybff.services.impl;
 
 import lombok.AllArgsConstructor;
+import net.escoz.bestiarybff.exceptions.NotFoundException;
 import net.escoz.bestiarybff.models.Creature;
 import net.escoz.bestiarybff.repositories.CreatureRepository;
 import net.escoz.bestiarybff.services.CreatureService;
@@ -17,5 +18,11 @@ public class CreatureServiceImpl implements CreatureService {
 	@Override
 	public Page<Creature> getCreatures(Pageable pageable) {
 		return creatureRepository.findAll(pageable);
+	}
+
+	@Override
+	public Creature getCreature(long id) {
+		return creatureRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Creature with id: " + id + " not found"));
 	}
 }

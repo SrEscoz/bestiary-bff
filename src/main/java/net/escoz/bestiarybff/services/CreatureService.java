@@ -8,4 +8,6 @@ public interface CreatureService {
 
 	Page<Creature> getCreatures(Pageable pageable);
 
+	Creature getCreature(long id);
+
 }
