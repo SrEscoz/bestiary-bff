@@ -1,0 +1,18 @@
+server:
+  port: 8020
+  servlet:
+    context-path: /bestiary-bff/v1
+
+spring:
+  application:
+    name: bestiary-bff
+
+  # Configuración de la bd bb
+  datasource:
+    url: jdbc:h2:mem:bestiaryDB
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
