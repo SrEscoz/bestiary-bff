@@ -1,11 +1,11 @@
 package net.escoz.bestiarybff.services;
 
 import net.escoz.bestiarybff.models.Creature;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface CreatureService {
 
-	List<Creature> getCreatures();
+	Page<Creature> getCreatures(Pageable pageable);
 
 }
