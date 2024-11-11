@@ -25,4 +25,9 @@ public class CreatureServiceImpl implements CreatureService {
 		return creatureRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Creature with id: " + id + " not found"));
 	}
+
+	@Override
+	public void deleteCreature(long id) {
+		creatureRepository.delete(getCreature(id));
+	}
 }

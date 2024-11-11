@@ -1,7 +1,8 @@
 package net.escoz.bestiarybff.controllers;
 
 import lombok.AllArgsConstructor;
-import net.escoz.bestiarybff.controllers.dtos.CreatureOutDTO;
+import net.escoz.bestiarybff.controllers.dtos.BasicResponse;
+import net.escoz.bestiarybff.controllers.dtos.responses.CreatureOutDTO;
 import net.escoz.bestiarybff.controllers.dtos.PaginatedResponse;
 import net.escoz.bestiarybff.mappers.CreatureMapper;
 import net.escoz.bestiarybff.models.Creature;
@@ -39,5 +40,14 @@ public class CreatureController {
 		return ResponseEntity
 				.ok()
 				.body(mapper.toDTO(creatureService.getCreature(id)));
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<BasicResponse> deleteCreature(@PathVariable long id) {
+		creatureService.deleteCreature(id);
+
+		return ResponseEntity
+				.ok()
+				.body(new BasicResponse("Creature with id: " + id + " deleted"));
 	}
 }

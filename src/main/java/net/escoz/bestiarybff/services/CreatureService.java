@@ -10,4 +10,6 @@ public interface CreatureService {
 
 	Creature getCreature(long id);
 
+	void deleteCreature(long id);
+
 }

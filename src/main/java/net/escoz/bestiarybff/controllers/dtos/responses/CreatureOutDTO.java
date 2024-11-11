@@ -1,4 +1,4 @@
-package net.escoz.bestiarybff.controllers.dtos;
+package net.escoz.bestiarybff.controllers.dtos.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
