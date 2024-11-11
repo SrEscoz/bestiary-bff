@@ -14,9 +14,9 @@ public class CreatureOutDTO {
 	private String type;
 	private String alignment;
 	private String size;
-	private String armorClass;
+	private int armorClass;
 	private String hitPoints;
-	private String challengeRating;
+	private int challengeRating;
 
 
 }

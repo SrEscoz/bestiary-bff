@@ -1,6 +1,7 @@
 package net.escoz.bestiarybff.controllers;
 
 import net.escoz.bestiarybff.controllers.dtos.ErrorResponse;
+import net.escoz.bestiarybff.exceptions.EntityConflictException;
 import net.escoz.bestiarybff.exceptions.NotFoundException;
 import net.escoz.bestiarybff.exceptions.ValidationException;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,19 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
 		return ResponseEntity
 				.status(HttpStatus.BAD_REQUEST)
+				.body(response);
+	}
+
+	@ExceptionHandler(value = {EntityConflictException.class})
+	protected ResponseEntity<ErrorResponse> handleEntityConflictException(Exception exception) {
+		ErrorResponse response = ErrorResponse.builder()
+				.timestamp(Instant.now().toString())
+				.status(HttpStatus.CONFLICT.value())
+				.error(exception.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.CONFLICT)
 				.body(response);
 	}
 }

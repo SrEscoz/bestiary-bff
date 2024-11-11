@@ -1,16 +1,22 @@
 package net.escoz.bestiarybff.controllers;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import net.escoz.bestiarybff.controllers.dtos.BasicResponse;
 import net.escoz.bestiarybff.controllers.dtos.PaginatedResponse;
+import net.escoz.bestiarybff.controllers.dtos.requests.CreatureInDTO;
 import net.escoz.bestiarybff.controllers.dtos.responses.CreatureOutDTO;
+import net.escoz.bestiarybff.exceptions.ValidationException;
 import net.escoz.bestiarybff.mappers.CreatureMapper;
 import net.escoz.bestiarybff.models.Creature;
 import net.escoz.bestiarybff.services.CreatureService;
+import net.escoz.bestiarybff.utils.Utils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -40,6 +46,21 @@ public class CreatureController {
 		return ResponseEntity
 				.ok()
 				.body(mapper.toDTO(creatureService.getCreature(id)));
+	}
+
+	@PostMapping
+	public ResponseEntity<CreatureOutDTO> addCreature(@Valid @RequestBody CreatureInDTO request,
+	                                                  BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			throw new ValidationException(Utils.getFieldErrors(bindingResult));
+		}
+
+		Creature creature = creatureService.addCreature(mapper.toEntity(request));
+
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(mapper.toDTO(creature));
 	}
 
 	@DeleteMapping("/{id}")

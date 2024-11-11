@@ -14,6 +14,7 @@ public class Creature {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(unique = true)
 	private String name;
 
 	@ManyToOne(optional = false)
@@ -25,8 +26,8 @@ public class Creature {
 	private Alignment alignment;
 
 	private String size;
-	private String armorClass;
+	private Integer armorClass;
 	private String hitPoints;
-	private String challengeRating;
+	private Integer challengeRating;
 
 }

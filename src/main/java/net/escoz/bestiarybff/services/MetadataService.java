@@ -9,5 +9,9 @@ public interface MetadataService {
 
 	List<Alignment> getAligments();
 
+	Alignment getAlignment(long id);
+
 	List<Type> getTypes();
+
+	Type getType(long id);
 }
