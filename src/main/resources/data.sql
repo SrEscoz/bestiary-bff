@@ -9,3 +9,30 @@ VALUES ('Goblin', 'Humanoide', 'Pequeño', '15', '7 (2d6)', '1/4'),
        ('Duendecillo', 'Feérico', 'Diminuto', '13', '1 (1d4)', '1/8'),
        ('Liche', 'No Muerto', 'Mediano', '17', '135 (18d8+54)', '21'),
        ('Desuellamentes', 'Aberración', 'Mediano', '15', '71 (13d8+13)', '7');
+
+INSERT INTO creature_types (name)
+VALUES ('Humanoide'),
+       ('No Muerto'),
+       ('Dragón'),
+       ('Aberración'),
+       ('Bestia'),
+       ('Gigante'),
+       ('Constructo'),
+       ('Elemental'),
+       ('Feérico'),
+       ('Celestial'),
+       ('Infernal'),
+       ('Planta');
+
+INSERT INTO alignments (name)
+VALUES ('Legal Bueno'),
+       ('Neutral Bueno'),
+       ('Caótico Bueno'),
+       ('Legal Neutral'),
+       ('Neutral'),
+       ('Caótico Neutral'),
+       ('Legal Malvado'),
+       ('Neutral Malvado'),
+       ('Caótico Malvado'),
+       ('No alineado');
+

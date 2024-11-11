@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/creatures")
 @AllArgsConstructor
+@RequestMapping("/creatures")
 public class CreatureController {
 
 	private final CreatureService creatureService;
