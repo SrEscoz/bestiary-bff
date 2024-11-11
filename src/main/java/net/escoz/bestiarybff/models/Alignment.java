@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "alignments")
-public class Aligment {
+public class Alignment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

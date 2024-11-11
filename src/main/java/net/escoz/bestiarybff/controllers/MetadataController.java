@@ -3,7 +3,7 @@ package net.escoz.bestiarybff.controllers;
 import lombok.AllArgsConstructor;
 import net.escoz.bestiarybff.controllers.dtos.responses.MetadataOutDTO;
 import net.escoz.bestiarybff.mappers.MetadataMapper;
-import net.escoz.bestiarybff.models.Aligment;
+import net.escoz.bestiarybff.models.Alignment;
 import net.escoz.bestiarybff.models.Type;
 import net.escoz.bestiarybff.services.MetadataService;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class MetadataController {
 
 	@GetMapping
 	public ResponseEntity<MetadataOutDTO> getMetadata() {
-		List<Aligment> aligments = metadataService.getAligments();
+		List<Alignment> aligments = metadataService.getAligments();
 		List<Type> types = metadataService.getTypes();
 
 		return ResponseEntity

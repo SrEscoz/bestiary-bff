@@ -15,7 +15,15 @@ public class Creature {
 	private Long id;
 
 	private String name;
-	private String type;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "type_id", nullable = false)
+	private Type type;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "aligment_id", nullable = false)
+	private Alignment alignment;
+
 	private String size;
 	private String armorClass;
 	private String hitPoints;

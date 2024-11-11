@@ -1,7 +1,7 @@
 package net.escoz.bestiarybff.services.impl;
 
 import lombok.AllArgsConstructor;
-import net.escoz.bestiarybff.models.Aligment;
+import net.escoz.bestiarybff.models.Alignment;
 import net.escoz.bestiarybff.models.Type;
 import net.escoz.bestiarybff.repositories.AligmentRepository;
 import net.escoz.bestiarybff.repositories.TypeRepository;
@@ -18,7 +18,7 @@ public class MetadataServiceImpl implements MetadataService {
 	private final TypeRepository typeRepository;
 
 	@Override
-	public List<Aligment> getAligments() {
+	public List<Alignment> getAligments() {
 		return aligmentRepository.findAll();
 	}
 

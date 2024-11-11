@@ -2,8 +2,8 @@ package net.escoz.bestiarybff.controllers;
 
 import lombok.AllArgsConstructor;
 import net.escoz.bestiarybff.controllers.dtos.BasicResponse;
-import net.escoz.bestiarybff.controllers.dtos.responses.CreatureOutDTO;
 import net.escoz.bestiarybff.controllers.dtos.PaginatedResponse;
+import net.escoz.bestiarybff.controllers.dtos.responses.CreatureOutDTO;
 import net.escoz.bestiarybff.mappers.CreatureMapper;
 import net.escoz.bestiarybff.models.Creature;
 import net.escoz.bestiarybff.services.CreatureService;
