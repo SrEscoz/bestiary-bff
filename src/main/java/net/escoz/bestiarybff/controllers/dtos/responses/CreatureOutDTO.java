@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +19,6 @@ public class CreatureOutDTO {
 	private int armorClass;
 	private String hitPoints;
 	private int challengeRating;
-
-
+	private List<ActionOutDTO> actions;
+	private List<LegendaryActionOutDTO> legendaryActions;
 }

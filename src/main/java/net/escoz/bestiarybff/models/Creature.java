@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -29,5 +32,14 @@ public class Creature {
 	private Integer armorClass;
 	private String hitPoints;
 	private Integer challengeRating;
+
+	@ManyToMany
+	@JoinTable(name = "creatures_actions",
+			joinColumns = @JoinColumn(name = "creature_id"),
+			inverseJoinColumns = @JoinColumn(name = "actions_id"))
+	private Set<Action> actions = new LinkedHashSet<>();
+
+	@OneToMany(mappedBy = "creature")
+	private Set<LegendaryAction> legendaryActions = new LinkedHashSet<>();
 
 }
