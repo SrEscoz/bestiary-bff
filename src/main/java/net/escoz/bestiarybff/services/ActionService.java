@@ -9,6 +9,10 @@ public interface ActionService {
 
 	List<Action> getActions();
 
+	Action getAction(long id);
+
 	List<LegendaryAction> getLegendaryActions();
+
+	LegendaryAction getLegendaryAction(long id);
 
 }

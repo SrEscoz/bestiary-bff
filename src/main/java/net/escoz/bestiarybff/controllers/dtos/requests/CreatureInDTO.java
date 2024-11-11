@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,5 +33,9 @@ public class CreatureInDTO {
 
 	@NotNull
 	private Integer challengeRating;
+
+	private List<Long> actions;
+
+	private List<Long> legendaryActions;
 
 }

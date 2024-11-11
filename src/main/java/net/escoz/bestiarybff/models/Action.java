@@ -1,8 +1,7 @@
 package net.escoz.bestiarybff.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -11,9 +10,12 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "action")
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Action {
 
 	@Id
+	@NonNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -24,4 +26,5 @@ public class Action {
 
 	@ManyToMany(mappedBy = "actions")
 	private Set<Creature> creatures = new LinkedHashSet<>();
+
 }

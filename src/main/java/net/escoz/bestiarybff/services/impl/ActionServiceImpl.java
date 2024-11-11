@@ -1,6 +1,7 @@
 package net.escoz.bestiarybff.services.impl;
 
 import lombok.AllArgsConstructor;
+import net.escoz.bestiarybff.exceptions.NotFoundException;
 import net.escoz.bestiarybff.models.Action;
 import net.escoz.bestiarybff.models.LegendaryAction;
 import net.escoz.bestiarybff.repositories.ActionRepository;
@@ -23,7 +24,19 @@ public class ActionServiceImpl implements ActionService {
 	}
 
 	@Override
+	public Action getAction(long id) {
+		return actionRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Action with id: " + id + " not found"));
+	}
+
+	@Override
 	public List<LegendaryAction> getLegendaryActions() {
 		return legendaryActionRepository.findAll();
+	}
+
+	@Override
+	public LegendaryAction getLegendaryAction(long id) {
+		return legendaryActionRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Legendary Action with id: " + id + " not found"));
 	}
 }
