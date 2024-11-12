@@ -60,7 +60,7 @@ relacionado con criaturas mágicas. 🧙‍♂️✨
 Una vez que la aplicación esté en ejecución, puedes acceder a la documentación de la API y probar los endpoints
 directamente a través de Swagger en:
 
-- `http://localhost:8020/swagger-ui.html`
+- `http://localhost:8020/bestiary-bff/v1/swagger-ui/index.html`
 
 Aquí verás detalles de cada endpoint, los métodos HTTP disponibles, parámetros requeridos y ejemplos de respuestas.
 
