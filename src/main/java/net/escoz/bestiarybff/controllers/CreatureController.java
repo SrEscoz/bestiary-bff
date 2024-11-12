@@ -19,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @AllArgsConstructor
@@ -46,6 +48,13 @@ public class CreatureController {
 		return ResponseEntity
 				.ok()
 				.body(mapper.toDTO(creatureService.getCreature(id)));
+	}
+
+	@GetMapping("/random-encounter")
+	public ResponseEntity<List<CreatureOutDTO>> getRandom(@RequestParam(name = "n_creatures", defaultValue = "3") int nCreatures) {
+		return ResponseEntity
+				.ok()
+				.body(mapper.toDTOs(creatureService.randomEncounter(nCreatures)));
 	}
 
 	@PostMapping

@@ -20,6 +20,8 @@ public interface CreatureMapper {
 	@Mapping(target = "alignment", source = "alignment.name")
 	CreatureOutDTO toDTO(Creature creature);
 
+	List<CreatureOutDTO> toDTOs(List<Creature> creatures);
+
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "type.id", source = "typeId")
 	@Mapping(target = "alignment.id", source = "alignmentId")

@@ -14,6 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,6 +38,24 @@ public class CreatureServiceImpl implements CreatureService {
 	public Creature getCreature(long id) {
 		return creatureRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Creature with id: " + id + " not found"));
+	}
+
+	@Override
+	public List<Creature> randomEncounter(int nCreatures) {
+		Random random = new Random();
+		List<Long> ids = creatureRepository.getAllIds();
+		List<Creature> creatures = new ArrayList<>();
+
+		for (int i = 0; i < nCreatures; i++) {
+			int j = random.ints(0, ids.size())
+					.findFirst()
+					.orElse(0);
+
+			creatures.add(creatureRepository.findById(ids.get(j))
+					.orElseThrow(() -> new NotFoundException("Creature with id: " + ids.get(j) + " not found")));
+		}
+
+		return creatures;
 	}
 
 	@Override
