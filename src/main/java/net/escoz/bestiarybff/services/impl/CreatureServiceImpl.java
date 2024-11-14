@@ -14,10 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,6 +63,32 @@ public class CreatureServiceImpl implements CreatureService {
 					throw new EntityConflictException("Creature with name: " + creature.getName() + " already exists");
 				});
 
+		return creatureRepository.save(compleateCreatureData(creature));
+	}
+
+	@Override
+	public Creature updateCreature(Creature creature) {
+
+		Creature currentCreature = getCreature(creature.getId());
+
+		creatureRepository.findByName(creature.getName())
+				.ifPresent(c -> {
+					if (!Objects.equals(c.getId(), currentCreature.getId())) {
+						throw new EntityConflictException("Creature with name: " + creature.getName() + " already exists");
+					}
+				});
+
+		// TODO check de las acciones que ya no tiene
+
+		return creatureRepository.save(compleateCreatureData(creature));
+	}
+
+	@Override
+	public void deleteCreature(long id) {
+		creatureRepository.delete(getCreature(id));
+	}
+
+	private Creature compleateCreatureData(Creature creature) {
 		creature.setType(metadataService.getType(creature.getType().getId()));
 		creature.setAlignment(metadataService.getAlignment(creature.getAlignment().getId()));
 
@@ -79,17 +102,17 @@ public class CreatureServiceImpl implements CreatureService {
 
 		if (creature.getLegendaryActions() != null) {
 			Set<LegendaryAction> actions = creature.getLegendaryActions().stream()
-					.map(action -> actionService.getLegendaryAction(action.getId()))
+					.map(action -> {
+						LegendaryAction legendaryAction = actionService.getLegendaryAction(action.getId());
+						legendaryAction.setCreature(creature);
+
+						return legendaryAction;
+					})
 					.collect(Collectors.toSet());
 
 			creature.setLegendaryActions(actions);
 		}
 
-		return creatureRepository.save(creature);
-	}
-
-	@Override
-	public void deleteCreature(long id) {
-		creatureRepository.delete(getCreature(id));
+		return creature;
 	}
 }

@@ -72,6 +72,22 @@ public class CreatureController {
 				.body(mapper.toDTO(creature));
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<CreatureOutDTO> updateCreature(@PathVariable long id,
+	                                                     @Valid @RequestBody CreatureInDTO request,
+	                                                     BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			throw new ValidationException(Utils.getFieldErrors(bindingResult));
+		}
+
+		Creature creature = mapper.toEntity(request);
+		creature.setId(id);
+
+		return ResponseEntity
+				.ok()
+				.body(mapper.toDTO(creatureService.updateCreature(creature)));
+	}
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<BasicResponse> deleteCreature(@PathVariable long id) {
 		creatureService.deleteCreature(id);

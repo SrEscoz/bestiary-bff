@@ -16,6 +16,8 @@ public interface CreatureService {
 
 	Creature addCreature(Creature creature);
 
+	Creature updateCreature(Creature creature);
+
 	void deleteCreature(long id);
 
 }

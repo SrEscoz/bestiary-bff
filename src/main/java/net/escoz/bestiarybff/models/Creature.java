@@ -39,7 +39,7 @@ public class Creature {
 			inverseJoinColumns = @JoinColumn(name = "actions_id"))
 	private Set<Action> actions = new LinkedHashSet<>();
 
-	@OneToMany(mappedBy = "creature")
+	@OneToMany(mappedBy = "creature", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Set<LegendaryAction> legendaryActions = new LinkedHashSet<>();
 
 }
