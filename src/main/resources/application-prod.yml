@@ -1,0 +1,12 @@
+server:
+  port: 8040
+spring:
+  # Configuración de la bd bb
+  datasource:
+    url: jdbc:mariadb://mariadb.escoz.net:3570/Bestiary
+    username: escoz-beast
+    password: escoz-beast
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
